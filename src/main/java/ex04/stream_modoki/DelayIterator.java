@@ -3,43 +3,66 @@ package ex04.stream_modoki;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/**
+ * 次に{@link #next()}で返す要素を先読みする。先読みした要素は{@link 
+ * #peek()}で参照できる。
+ * @param <E>
+ */
 public final class DelayIterator<E> implements Iterator<E> {
-	
+	/** Indicates end of iterator */
 	private static final Object End = new Object();
 	
+	/** base iterator */
 	private final Iterator<E> base;
-	protected Object last;
+	/** next element. If iterator is end, it is {@link #End} */
+	protected Object next;
 	
+	/**
+	 * 
+	 * @param base base iterator
+	 */
 	public DelayIterator(Iterator<E> base){
 		this.base = base;
 		readNext();
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	@Override
 	public boolean hasNext() {
-		return last != End;
+		return next != End;
 	}
-
+	
+	/**
+	 * 
+	 * @return
+	 */
 	@SuppressWarnings("unchecked")
 	public E peek(){
 		if(!hasNext()){
 			throw new NoSuchElementException();
 		}
-		return (E)last;
+		return (E)next;
 	}
-	
+
+	/**
+	 * 
+	 * @return
+	 */
 	@Override
 	public E next() {
-		if(!hasNext()){
-			throw new NoSuchElementException();
-		}
-		@SuppressWarnings("unchecked")
-		E ret = (E)last;
+		E ret = peek();
 		readNext();
 		return ret;
 	}
 
+	/**
+	 * Reads next element and caches.
+	 */
 	private void readNext(){
-		last = base.hasNext() ? base.next() : End;
+		next = base.hasNext() ? base.next() : End;
 	}
+	
 }
