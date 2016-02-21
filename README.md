@@ -1,3 +1,3 @@
 # Hello-world
 
-Fake stream api of java.
+Exercises in Gradle, Maven and GitHub.
