@@ -1,4 +1,4 @@
-package ex04.stream_modoki;
+package exam.stream_modoki;
 
 import java.util.Iterator;
 import java.util.function.Consumer;
@@ -10,10 +10,10 @@ import java.util.function.Function;
  */
 public final class PeekIterator<E> implements Iterator<E> {
 	
-	private final Iterator<E> base;
-	private final Function<E,E> consumer;
+	private final Iterator<? extends E> base;
+	private final Function<E, E> consumer;
 	
-	public PeekIterator(Iterator<E> base, Consumer<? super E> consumer){
+	public PeekIterator(Iterator<? extends E> base, Consumer<? super E> consumer){
 		this.base = base;
 		this.consumer = v -> { consumer.accept(v); return v;};
 	}

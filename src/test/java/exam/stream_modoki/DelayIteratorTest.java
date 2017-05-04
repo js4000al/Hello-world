@@ -1,4 +1,4 @@
-package ex04.stream_modoki;
+package exam.stream_modoki;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
 
 import org.junit.Test;
 
-import ex04.stream_modoki.DelayIterator;
+import exam.stream_modoki.DelayIterator;
 
 
 public class DelayIteratorTest {

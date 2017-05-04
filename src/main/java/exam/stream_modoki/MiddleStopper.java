@@ -1,4 +1,4 @@
-package ex04.stream_modoki;
+package exam.stream_modoki;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -13,7 +13,7 @@ public final class MiddleStopper<E> implements Iterator<E> {
 	private final DelayIterator<E> it;
 	private final Predicate<? super E> continueCond;
 	
-	public MiddleStopper(Iterator<E> base, Predicate<? super E> stopCond){
+	public MiddleStopper(Iterator<? extends E> base, Predicate<? super E> stopCond){
 		it = new DelayIterator<>(base);
 		continueCond = Predicates.until(v -> stopCond.test(v));
 	}

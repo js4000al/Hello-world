@@ -1,6 +1,6 @@
-package ex04.stream_modoki;
+package exam.stream_modoki;
 
-import static ex04.stream_modoki.Predicates.*;
+import static exam.stream_modoki.Predicates.*;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -28,17 +28,17 @@ public class CheapStream<E> implements Iterable<E>{
 	 * @param iterable
 	 * @return
 	 */
-	public static <E> CheapStream<E> of(Iterable<E> iterable){
+	public static <E> CheapStream<E> of(Iterable<? extends E> iterable){
 		return new CheapStream<>(iterable);
 	}
 
 	/** 元になるイテレータ */
-	private final Iterable<E> iterable;
+	private final Iterable<? extends E> iterable;
 	/**
 	 * 
 	 * @param iterable 元になるイテレータ。
 	 */
-	private CheapStream(Iterable<E> iterable){
+	private CheapStream(Iterable<? extends E> iterable){
 		this.iterable = iterable;
 	}
 
@@ -120,7 +120,7 @@ public class CheapStream<E> implements Iterable<E>{
 
 	@Override
 	public Iterator<E> iterator(){
-		return iterable.iterator();
+		return new DelayIterator<>(iterable.iterator());
 	}
 	
 }

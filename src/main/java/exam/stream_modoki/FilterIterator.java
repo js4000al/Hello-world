@@ -1,4 +1,4 @@
-package ex04.stream_modoki;
+package exam.stream_modoki;
 
 import java.util.Iterator;
 import java.util.function.Predicate;
@@ -13,7 +13,7 @@ public class FilterIterator<E> implements Iterator<E>{
 	private final DelayIterator<E> it;
 	private Predicate<? super E> filter;
 	
-	public FilterIterator(Iterator<E> base, Predicate<? super E> filter){
+	public FilterIterator(Iterator<? extends E> base, Predicate<? super E> filter){
 		it = new DelayIterator<>(base);
 		this.filter = filter;
 	}

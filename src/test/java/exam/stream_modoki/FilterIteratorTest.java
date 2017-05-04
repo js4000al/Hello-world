@@ -1,11 +1,11 @@
-package ex04.stream_modoki;
+package exam.stream_modoki;
 
 import static org.junit.Assert.*;
 import static test.UT.*;
 
 import org.junit.Test;
 
-import ex04.stream_modoki.FilterIterator;
+import exam.stream_modoki.FilterIterator;
 
 public class FilterIteratorTest {
 

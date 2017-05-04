@@ -1,4 +1,4 @@
-package ex04.stream_modoki;
+package exam.stream_modoki;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -13,7 +13,7 @@ public final class DelayIterator<E> implements Iterator<E> {
 	private static final Object End = new Object();
 	
 	/** base iterator */
-	private final Iterator<E> base;
+	private final Iterator<? extends E> base;
 	/** next element. If iterator is end, it is {@link #End} */
 	protected Object next;
 	
@@ -21,7 +21,7 @@ public final class DelayIterator<E> implements Iterator<E> {
 	 * 
 	 * @param base base iterator
 	 */
-	public DelayIterator(Iterator<E> base){
+	public DelayIterator(Iterator<? extends E> base){
 		this.base = base;
 		readNext();
 	}
